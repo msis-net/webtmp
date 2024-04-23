@@ -1,0 +1,66 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/header.svelte";
+
+import Asidel from "@/pages/_asidel.astro";
+import Main from "@/pages/_main.astro";
+import Asider from "@/pages/_asider.astro";
+
+const appname = "Webapp";
+---
+
+<Layout title={appname}>
+  <nav class="flex bg-purple-300 p-2">
+    <Header title="Header(Svelte)" client:only="svelte" />
+  </nav>
+  <div class="content-wrapp flex bg-white">
+    <aside id="LeftFrame" class="order-first w-56 p-2 overflow-y-auto">
+      <Asidel label="L(Astro)" />
+    </aside>
+
+    <div id="Splitter1" class="w-1 bg-slate-300 cursor-col-resize"></div>
+
+    <main class="flex-1 bg-yellow-50">
+      <Main label="Main(Astro)" />
+    </main>
+    <aside class="w-32 bg-blue-100 p-2 overflow-y-auto">
+      <Asider label="R(Astro)" />
+    </aside>
+  </div>
+
+  <script>
+    //Spliter
+    let StartDrag = false;
+
+    window.onload = onLoad;
+
+    function onLoad() {
+      const splitter = document.querySelector("#Splitter1");
+      const leftFrame = document.querySelector("#LeftFrame");
+
+      if (splitter) {
+        splitter.addEventListener("mousedown", () => {
+          StartDrag = true;
+        });
+      }
+
+      document.addEventListener("mouseup", (e) => {
+        if (StartDrag == true) {
+          StartDrag = false;
+          const size = `${e.x}px`;
+          if (leftFrame instanceof HTMLElement) {
+            leftFrame.style.flexBasis = size;
+          }
+        }
+      });
+      document.addEventListener("mousemove", (e) => {
+        if (StartDrag == true) {
+          const size = `${e.x}px`;
+          if (leftFrame instanceof HTMLElement) {
+            leftFrame.style.flexBasis = size;
+          }
+        }
+      });
+    }
+  </script>
+</Layout>

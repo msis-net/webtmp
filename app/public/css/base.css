@@ -1,0 +1,30 @@
+@charset "UTF-8";
+:root {
+  --nav-height: 68px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+
+
+nav {
+  height: var(--nav-height);
+}
+
+/*横幅全体のNavバーを設置した場合はその分の高さ調整が必要になる*/
+.content-wrapp {
+  height: calc(100% - var(--nav-height));
+}
+
+/*Navigateのタブ表示部分の高さ*/
+.height-content {
+  height: calc(100% - 102px);
+}
+
+

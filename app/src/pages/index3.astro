@@ -1,0 +1,103 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/header.svelte";
+import Sidebar from "@/components/sidebar.svelte";
+
+import Main from "@/pages/_main.astro";
+import Asider from "@/pages/_asider.astro";
+
+const appname = "Webapp";
+---
+
+<Layout title={appname}>
+  <!-- toggle section -->
+  <input type="checkbox" id="check" class="hidden" />
+  <label for="check">
+    <span
+      id="menu"
+      class="material-symbols-outlined absolute text-4xl left-[250px] p-2 top-2 text-gray-400"
+    >
+      menu
+    </span>
+  </label>
+  <!-- sidebar section -->
+  <div class="sidebar fixed left-0 bg-slate-200 w-[250px] h-lvh">
+    <Sidebar title="SidebarLeft" client:only="svelte" />
+  </div>
+  <!-- content section -->
+  <section class="bg-blue-300 h-lvh">
+    <nav class="flex bg-purple-300 p-2">
+      <Header title="HEader(Svelte)" client:only="svelte" />
+    </nav>
+    <div class="flex content-wrapp">
+      <main class="flex-1 bg-yellow-50 p-2 overflow-y-auto">
+        <Main label="Main(astro)" />
+      </main>
+      <aside class="w-32 bg-blue-100 p-2 overflow-y-auto">
+        <Asider label="R(Astro)" />
+      </aside>
+    </div>
+  </section>
+</Layout>
+<style></style>
+<style>
+  .sidebar {
+    transition: all 0.5s;
+  }
+
+  label #btn {
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+
+  #check:checked ~ .sidebar {
+    left: -250px;
+  }
+
+  #check:checked ~ label #menu {
+    left: 0px;
+  }
+
+  #check:checked ~ section {
+    margin-left: 0px;
+  }
+
+  section {
+    margin-left: 250px;
+    transition: all 0.5s;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      left: -250px;
+    }
+    #menu {
+      left: 0px;
+    }
+    section {
+      margin-left: 0px;
+    }
+    #check:checked ~ .sidebar {
+      left: 0px;
+    }
+
+    #check:checked ~ label #btn {
+      left: 250px;
+    }
+
+    #check:checked ~ section {
+      margin-left: 250px;
+    }
+  }
+  @media (min-width: 768px) {
+    .sidebar {
+      left: 0px;
+    }
+    #btn {
+      left: 250px;
+    }
+    section {
+      margin-left: 250px;
+    }
+  }
+</style>

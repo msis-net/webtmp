@@ -1,0 +1,121 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/_navbar.svelte";
+import Sidenav from "@/components/_sidenav.svelte";
+import Pagenav from "@/components/_pagenav.svelte";
+
+import Main from "@/pages/_main.astro";
+
+const appname = "Webapp";
+---
+
+<Layout title={appname}>
+  <!-- toggle section -->
+  <input type="checkbox" id="sidenav" class="hidden" />
+  <label for="sidenav">
+    <span
+      id="sidenav_btn"
+      class="material-symbols-outlined absolute text-2xl left-[250px] p-2 top-2 text-gray-500"
+    >
+      menu
+    </span>
+  </label>
+  <!-- toggle section -->
+  <input type="checkbox" id="pagenav" class="hidden" />
+  <label for="pagenav">
+    <span
+      id="pagenav_btn"
+      class="material-symbols-outlined absolute text-2xl right-0 p-2 top-2 text-gray-500"
+    >
+      right_panel_open
+    </span>
+  </label>
+  <!-- sidebar section -->
+  <div class="sidenav fixed left-0 h-lvh w-60 bg-slate-200">
+    <Sidenav title="sidenav" client:only="svelte" />
+  </div>
+  <!-- content section -->
+  <section class="h-lvh">
+    <nav class="flex bg-purple-300">
+      <Navbar title="header" client:only="svelte" />
+    </nav>
+    <div class="flex content-wrapp">
+      <main class="flex-1 bg-yellow-50 p-2 overflow-y-auto">
+        <Main label="Main" />
+      </main>
+      <div class="pagenav">aaa</div>
+      <!--
+        <aside class="w-32 bg-blue-100 p-2 overflow-y-auto"></aside>
+      </aside> 
+    -->
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sidenav {
+    transition: all 0.5s;
+  }
+
+  #sidenav_btn,
+  #pagenav_btn {
+    cursor: pointer;
+    transition: all 0.5s;
+    z-index: 10;
+  }
+
+  #sidenav:checked ~ .sidenav {
+    left: -240px;
+  }
+
+  #sidenav:checked ~ label #sidenav_btn {
+    left: 0px;
+  }
+
+  #sidenav:checked ~ section {
+    margin-left: 0px;
+  }
+  .pagenav {
+    transition: all 0.5s;
+    width: 0px;
+  }
+
+  #pagenav:checked ~ section div .pagenav {
+    display: block;
+    width: 200px;
+    background-color: skyblue;
+  }
+
+  section {
+    margin-left: 240px;
+    transition: all 0.5s;
+  }
+
+  @media (max-width: 768px) {
+    .sidenav {
+      left: -250px;
+    }
+    #sidenav_btn {
+      left: 0px;
+    }
+    section {
+      margin-left: 0px;
+    }
+    #sidenav:checked ~ .sidenav {
+      left: 0px;
+    }
+
+    #sidenav:checked ~ label #sidebar {
+      z-index: 10;
+      left: 190px;
+    }
+  }
+  @media (min-width: 768px) {
+    .sidenav {
+      left: 0px;
+    }
+    #btn {
+      left: 250px;
+    }
+  }
+</style>
