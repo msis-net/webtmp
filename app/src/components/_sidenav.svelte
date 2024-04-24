@@ -15,7 +15,7 @@
 <div class="text-xl bg-yellow-200 select-none p-5">
   {$t("common.header.title")}
 </div>
-<ul class="text-white bg-slate-600">
+<ul class="text-white bg-slate-600 overflow-y-auto">
   <li>
     <button on:click={() => NavContext("Dashbord")}>
       <span class="material-symbols-outlined"> speed </span>

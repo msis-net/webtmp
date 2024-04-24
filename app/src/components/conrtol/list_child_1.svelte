@@ -18,7 +18,6 @@
     } else {
       arrowDown = true;
     }
-    console.log("arrowDown", arrowDown);
   };
 </script>
 

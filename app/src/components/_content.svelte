@@ -22,7 +22,6 @@
 
   $: {
     if ($navcontext.length > 0) {
-      console.log(options.find((v) => v.name == $navcontext));
       if (options.find((v) => v.name == $navcontext)) {
         selected = options.find((v) => v.name == $navcontext);
       } else {

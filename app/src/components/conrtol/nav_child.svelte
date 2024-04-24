@@ -70,7 +70,6 @@
   .dropdown {
     @apply relative p-2;
     cursor: pointer;
-    user-select: none;
   }
 
   .dropdown:hover {

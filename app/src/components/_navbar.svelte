@@ -6,13 +6,14 @@
   loadTranslations($language, "/");
   const NavContext = (context) => {
     $navcontext = context;
+    console.log("navcontext", $navcontext);
   };
 </script>
 
 <!--headerの全体枠-->
 <div class="relative m-2 w-lvw">
   <div class="hidden">{title}</div>
-  <ul class="absolute left-12 flex text-gray-600 space-x-5 top-2 mainmanu">
+  <ul class="navbar-main">
     <li>
       <button on:click={() => NavContext("home")}>
         <span class="material-symbols-outlined"> home </span>
@@ -32,14 +33,16 @@
 </div>
 
 <style>
+  .navbar-main {
+    @apply absolute left-12 flex space-x-5;
+    line-height: 42px;
+    color: #666;
+  }
   /*.navbar-nav 
   右下寄せ、要素内：横並び、左右中央、16px間隔　
   */
   .navbar-child {
     @apply absolute flex right-8 bottom-0 align-middle justify-center space-x-4 text-gray-600;
-  }
-  div {
-    user-select: none;
   }
 
   ul li {
