@@ -43,7 +43,9 @@ const appname = "Webapp";
       <main class="flex-1 bg-yellow-50 p-2 overflow-y-auto">
         <Main label="Main" />
       </main>
-      <div class="pagenav">aaa</div>
+      <div class="pagenav">
+        <Pagenav title="Pagenav" client:only="svelte" />
+      </div>
       <!--
         <aside class="w-32 bg-blue-100 p-2 overflow-y-auto"></aside>
       </aside> 
@@ -76,14 +78,16 @@ const appname = "Webapp";
     margin-left: 0px;
   }
   .pagenav {
-    transition: all 0.5s;
     width: 0px;
   }
 
   #pagenav:checked ~ section div .pagenav {
+    position: static;
     display: block;
+    transition: all 0.5s;
     width: 200px;
     background-color: skyblue;
+    transition: all 0.5s;
   }
 
   section {

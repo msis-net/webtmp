@@ -27,4 +27,8 @@ nav {
   height: calc(100% - 102px);
 }
 
-
+/*Googleiconの縦位置の調整（デフォルトでは少しずれる）*/
+.material-symbols-outlined{
+  display: inline-flex;
+  vertical-align: middle;
+}

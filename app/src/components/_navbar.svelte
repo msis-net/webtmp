@@ -1,17 +1,7 @@
 <script>
   import NavChild from "./conrtol/nav_child.svelte";
   import Dropdown2 from "./conrtol/dropdown2.svelte";
-  import { dockLeft } from "@/lib/stores.js";
   export let title;
-
-  const dock_to_left = () => {
-    if (!$dockLeft) {
-      $dockLeft = true;
-    } else {
-      $dockLeft = false;
-    }
-    console.log("dockLeft", $dockLeft);
-  };
 </script>
 
 <!--headerの全体枠-->
