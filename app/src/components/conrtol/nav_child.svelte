@@ -68,8 +68,9 @@
 
 <style>
   .dropdown {
-    @apply relative p-2;
+    @apply relative;
     cursor: pointer;
+    font-size: 0.9em;
   }
 
   .dropdown:hover {
@@ -88,7 +89,7 @@
   }
 
   .dropdown-item {
-    @apply absolute w-64 -left-24 bg-white border rounded-md shadow-md;
+    @apply absolute w-48 -left-12 bg-white border rounded-md shadow-md;
     z-index: 20;
   }
 
