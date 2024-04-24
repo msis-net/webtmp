@@ -2,7 +2,7 @@
   import NavChild from "./conrtol/nav_child.svelte";
   import { loadTranslations, t, locale, locales } from "@/lib/i18n/i18n";
   import { language, navcontext } from "@/lib/stores.js";
-  export let title;
+  export let label;
   loadTranslations($language, "/");
   const NavContext = (context) => {
     $navcontext = context;
@@ -12,7 +12,7 @@
 
 <!--headerの全体枠-->
 <div class="relative m-2 w-lvw">
-  <div class="hidden">{title}</div>
+  <div class="hidden">{label}</div>
   <ul class="navbar-main">
     <li>
       <button on:click={() => NavContext("home")}>

@@ -11,7 +11,7 @@ const appname = "Webapp";
 
 <Layout title={appname}>
   <nav class="flex bg-purple-300 p-2">
-    <Navbar title="Header(Svelte)" client:only="svelte" />
+    <Navbar label="Header(Svelte)" client:only="svelte" />
   </nav>
   <div class="content-wrapp flex bg-white">
     <aside id="LeftFrame" class="order-first w-56 p-2 overflow-y-auto">
@@ -24,7 +24,7 @@ const appname = "Webapp";
       <Main label="Main(Astro)" />
     </main>
     <aside class="w-32 bg-blue-100 p-2 overflow-y-auto">
-      <Pagenav title="Pagenav" client:only="svelte" />
+      <Pagenav label="Pagenav" client:only="svelte" />
     </aside>
   </div>
 

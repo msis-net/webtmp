@@ -36,14 +36,14 @@ const appname = "Webapp";
   <!-- content section -->
   <section class="h-lvh">
     <nav class="flex bg-purple-300">
-      <Navbar title="header" client:only="svelte" />
+      <Navbar label="Navbar" client:only="svelte" />
     </nav>
     <div class="flex content-wrapp">
       <main class="flex-1 bg-yellow-50 p-2 overflow-y-auto">
-        <Content label="Main" client:only="svelte" />
+        <Content label="Content" client:only="svelte" />
       </main>
       <div class="pagenav">
-        <Pagenav title="Pagenav" client:only="svelte" />
+        <Pagenav label="Pagenav" client:only="svelte" />
       </div>
       <!--
         <aside class="w-32 bg-blue-100 p-2 overflow-y-auto"></aside>

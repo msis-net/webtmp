@@ -16,14 +16,14 @@ const appname = "Webapp";
     <div id="Splitter1" class="w-1 bg-slate-300 cursor-col-resize"></div>
     <div class="flex-1 bg-yellow-50 overflow-y-auto">
       <nav class="flex bg-purple-300 p-2">
-        <Navbar title="header" client:only="svelte" />
+        <Navbar label="header" client:only="svelte" />
       </nav>
       <div class="flex content-wrapp">
         <main class="flex-1 bg-yellow-50 p-2 overflow-y-auto">
           <Main label="Main(Astro)" />
         </main>
         <aside class="w-32 bg-blue-100 p-2 overflow-y-auto">
-          <Pagenav title="Pagenav" client:only="svelte" />
+          <Pagenav label="Pagenav" client:only="svelte" />
         </aside>
       </div>
     </div>
