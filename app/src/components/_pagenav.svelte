@@ -6,4 +6,5 @@
   loadTranslations($language, "/");
 </script>
 
-<main class="hidden">{title}</main>
+<main class="">{title}</main>
+<div>s</div>

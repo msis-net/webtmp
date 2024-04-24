@@ -1,20 +1,33 @@
 <script>
   import NavChild from "./conrtol/nav_child.svelte";
-  import Dropdown2 from "./conrtol/dropdown2.svelte";
+  import { loadTranslations, t, locale, locales } from "@/lib/i18n/i18n";
+  import { language, navcontext } from "@/lib/stores.js";
   export let title;
+  loadTranslations($language, "/");
+  const NavContext = (context) => {
+    $navcontext = context;
+  };
 </script>
 
 <!--headerの全体枠-->
 <div class="relative m-2 w-lvw">
   <div class="hidden">{title}</div>
-  <ul class="absolute left-12 flex text-gray-600 space-x-5 top-3 mainmanu">
-    <li><span class="material-symbols-outlined"> home </span></li>
-    <li><span class="material-symbols-outlined"> logout </span></li>
+  <ul class="absolute left-12 flex text-gray-600 space-x-5 top-2 mainmanu">
+    <li>
+      <button on:click={() => NavContext("home")}>
+        <span class="material-symbols-outlined"> home </span>
+      </button>
+    </li>
+    <li>
+      <button on:click={() => NavContext("logout")}>
+        <span class="material-symbols-outlined"> logout </span>
+      </button>
+    </li>
   </ul>
 
   <div class="navbar-child ms-auto space-x-2">
-    <NavChild label="Dropdown2" />
-    <NavChild label="Dropdown3" />
+    <NavChild label="Dropdown2" {NavContext} />
+    <NavChild label="Dropdown3" {NavContext} />
   </div>
 </div>
 
@@ -24,5 +37,12 @@
   */
   .navbar-child {
     @apply absolute flex right-8 bottom-0 align-middle justify-center space-x-4 text-gray-600;
+  }
+  div {
+    user-select: none;
+  }
+
+  ul li {
+    cursor: pointer;
   }
 </style>

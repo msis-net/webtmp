@@ -1,11 +1,13 @@
 <script>
   import { loadTranslations, t, locale, locales } from "@/lib/i18n/i18n";
-  import { language, CodeSystem, Tabname, OpenTab } from "@/lib/stores.js";
+  import { language, navcontext } from "@/lib/stores.js";
   import { slide } from "svelte/transition";
   import { quintOut } from "svelte/easing";
-  import ListChild1 from "./list_child1.svelte";
+  import ListChild_1 from "./list_child_1.svelte";
   loadTranslations($language, "/");
   export let label;
+  export let NavContext; //ParentFunction
+
   const onChange = () => {
     locale.set($language);
   };
@@ -22,7 +24,7 @@
 </script>
 
 <button on:click={toggleArrow}>
-  <div class="wrap">
+  <div>
     <!--span class="material-symbols-outlined"> unfold_more </span-->
     <span class="material-symbols-outlined mr-1"> segment </span>
     {label}
@@ -43,24 +45,24 @@
     }}
   >
     <li>
-      <a href="/">
+      <button on:click={() => NavContext("label")}>
         <span class="material-symbols-outlined"> label </span>
         label
-      </a>
+      </button>
     </li>
     <li>
-      <a href="/">
+      <button on:click={() => NavContext("label_important")}>
         <span class="material-symbols-outlined"> label_important </span>
         label_important
-      </a>
+      </button>
     </li>
     <li>
-      <a href="/">
+      <button on:click={() => NavContext("adjust")}>
         <span class="material-symbols-outlined"> adjust </span>
         adjust
-      </a>
+      </button>
     </li>
-    <ListChild1 label="child1" />
+    <ListChild_1 label="Child list" {NavContext} />
   </ul>
 {/if}
 
@@ -79,7 +81,7 @@
     align-items: center;
     line-height: 40px;
     width: 100%;
-    border-bottom: 1px solid #999;
+    border-top: 1px solid #999;
   }
 
   button div {
@@ -90,19 +92,19 @@
     display: flex;
     align-items: center;
     line-height: 30px;
-    border-bottom: 1px solid #999;
   }
 
-  ul a {
+  ul button {
     font-size: 0.8em;
     margin-left: 24px;
     display: block;
     width: 100%;
+    text-align: left;
     list-style: 56px;
     transition: 0.3s;
   }
 
-  ul li:hover a {
+  ul li:hover button {
     padding-left: 10px;
   }
   ul li span {

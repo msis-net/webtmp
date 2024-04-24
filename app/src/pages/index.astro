@@ -4,8 +4,7 @@ import Navbar from "@/components/_navbar.svelte";
 import Sidenav from "@/components/_sidenav.svelte";
 import Pagenav from "@/components/_pagenav.svelte";
 
-import Main from "@/pages/_main.astro";
-
+import Content from "@/components/_content.svelte";
 const appname = "Webapp";
 ---
 
@@ -41,7 +40,7 @@ const appname = "Webapp";
     </nav>
     <div class="flex content-wrapp">
       <main class="flex-1 bg-yellow-50 p-2 overflow-y-auto">
-        <Main label="Main" />
+        <Content label="Main" client:only="svelte" />
       </main>
       <div class="pagenav">
         <Pagenav title="Pagenav" client:only="svelte" />
@@ -79,6 +78,7 @@ const appname = "Webapp";
   }
   .pagenav {
     width: 0px;
+    display: none;
   }
 
   #pagenav:checked ~ section div .pagenav {

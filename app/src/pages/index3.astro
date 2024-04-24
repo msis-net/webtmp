@@ -1,10 +1,10 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Header from "@/components/header.svelte";
-import Sidebar from "@/components/sidebar.svelte";
+import Navbar from "@/components/_navbar.svelte";
+import Sidenav from "@/components/_sidenav.svelte";
+import Pagenav from "@/components/_pagenav.svelte";
 
 import Main from "@/pages/_main.astro";
-import Asider from "@/pages/_asider.astro";
 
 const appname = "Webapp";
 ---
@@ -22,19 +22,19 @@ const appname = "Webapp";
   </label>
   <!-- sidebar section -->
   <div class="sidebar fixed left-0 bg-slate-200 w-[250px] h-lvh">
-    <Sidebar title="SidebarLeft" client:only="svelte" />
+    <Sidenav title="sidenav" client:only="svelte" />
   </div>
   <!-- content section -->
   <section class="bg-blue-300 h-lvh">
     <nav class="flex bg-purple-300 p-2">
-      <Header title="HEader(Svelte)" client:only="svelte" />
+      <Navbar title="Header(Svelte)" client:only="svelte" />
     </nav>
     <div class="flex content-wrapp">
       <main class="flex-1 bg-yellow-50 p-2 overflow-y-auto">
         <Main label="Main(astro)" />
       </main>
       <aside class="w-32 bg-blue-100 p-2 overflow-y-auto">
-        <Asider label="R(Astro)" />
+        <Pagenav title="Pagenav" client:only="svelte" />
       </aside>
     </div>
   </section>

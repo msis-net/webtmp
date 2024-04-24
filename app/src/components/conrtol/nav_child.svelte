@@ -4,6 +4,7 @@
   import { fade } from "svelte/transition";
   loadTranslations($language, "/");
   export let label;
+  export let NavContext; //ParentFunction
   const onChange = () => {
     locale.set($language);
   };
@@ -46,10 +47,15 @@
   </button>
   {#if arrowDown}
     <ul class="dropdown-item hidden" transition:fade>
-      <li><a href="/">ABOUT</a></li>
-      <li><a href="/">SERVICE</a></li>
-      <li><a href="/">COMPANY</a></li>
-      <li><a href="/">CONTACT</a></li>
+      <li>
+        <button on:click={() => NavContext("ABOUT")}> ABOUT </button>
+      </li>
+      <li>
+        <button on:click={() => NavContext("SERVICE")}> SERVICE </button>
+      </li>
+      <li>
+        <button on:click={() => NavContext("CONTACT")}> CONTACT </button>
+      </li>
       <li>
         <select bind:value={$language} on:change={onChange}>
           <option value="en" selected>en</option>
@@ -64,6 +70,7 @@
   .dropdown {
     @apply relative p-2;
     cursor: pointer;
+    user-select: none;
   }
 
   .dropdown:hover {
@@ -92,8 +99,10 @@
     line-height: 30px;
     border-top: 1px solid #ddd;
   }
-  ul li a {
+  ul li button {
     margin: 4px;
+    width: 98%;
+    text-align: left;
     font-size: 0.8em;
   }
   ul li:hover {

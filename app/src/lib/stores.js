@@ -2,11 +2,12 @@ import { writable } from 'svelte/store'
 
 export const count = writable(0)
 function increment() {
-    
     count.update((n) => n + 1);
 }
 
 export const language = writable("en");
+export const navcontext = writable("");
+
 export const CodeSystem = writable("none")
 export const Tabname = writable("Taxonomy")
 

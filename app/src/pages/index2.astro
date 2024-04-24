@@ -1,30 +1,29 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Header from "@/components/header.svelte";
+import Navbar from "@/components/_navbar.svelte";
+import Sidenav from "@/components/_sidenav.svelte";
+import Pagenav from "@/components/_pagenav.svelte";
 
-import Asidel from "@/pages/_asidel.astro";
 import Main from "@/pages/_main.astro";
-import Asider from "@/pages/_asider.astro";
-
 const appname = "Webapp";
 ---
 
 <Layout title={appname}>
   <div class="flex h-screen bg-white">
     <aside id="LeftFrame" class="w-56 p-2 overflow-y-auto m-0">
-      <Asidel label="L" />
+      <Sidenav title="sidenav" client:only="svelte" />
     </aside>
     <div id="Splitter1" class="w-1 bg-slate-300 cursor-col-resize"></div>
     <div class="flex-1 bg-yellow-50 overflow-y-auto">
       <nav class="flex bg-purple-300 p-2">
-        <Header title="Header(Svelte)" client:only="svelte" />
+        <Navbar title="header" client:only="svelte" />
       </nav>
       <div class="flex content-wrapp">
         <main class="flex-1 bg-yellow-50 p-2 overflow-y-auto">
           <Main label="Main(Astro)" />
         </main>
         <aside class="w-32 bg-blue-100 p-2 overflow-y-auto">
-          <Asider label="R(Astro)" />
+          <Pagenav title="Pagenav" client:only="svelte" />
         </aside>
       </div>
     </div>

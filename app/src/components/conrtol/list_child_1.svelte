@@ -1,10 +1,12 @@
 <script>
   import { loadTranslations, t, locale, locales } from "@/lib/i18n/i18n";
-  import { language, CodeSystem, Tabname, OpenTab } from "@/lib/stores.js";
+  import { language, navcontext } from "@/lib/stores.js";
   import { slide } from "svelte/transition";
   import { quintOut } from "svelte/easing";
   loadTranslations($language, "/");
   export let label;
+  export let NavContext; //ParentFunction
+
   const onChange = () => {
     locale.set($language);
   };
@@ -21,7 +23,7 @@
 </script>
 
 <button on:click={toggleArrow}>
-  <div class="wrap">
+  <div>
     <!--span class="material-symbols-outlined"> unfold_more </span-->
     <span class="material-symbols-outlined"> fiber_smart_record </span>
 
@@ -43,22 +45,22 @@
     }}
   >
     <li>
-      <a href="/">
+      <button on:click={() => NavContext("Child label-1")}>
         <span class="material-symbols-outlined"> fiber_manual_record </span>
-        label
-      </a>
+        Child label-1
+      </button>
     </li>
     <li>
-      <a href="/">
+      <button on:click={() => NavContext("Child label-2")}>
         <span class="material-symbols-outlined"> fiber_manual_record </span>
-        label
-      </a>
+        Child label-2
+      </button>
     </li>
     <li>
-      <a href="/">
+      <button on:click={() => NavContext("Child label-3")}>
         <span class="material-symbols-outlined"> fiber_manual_record </span>
-        label
-      </a>
+        Child label-3
+      </button>
     </li>
   </ul>
 {/if}
@@ -76,33 +78,36 @@
   button {
     display: flex;
     align-items: center;
-    line-height: 30px;
+    line-height: 40px;
     width: 100%;
-    border-bottom: 1px solid #999;
   }
 
   button div {
     margin-left: 24px;
+    width: 100%;
+    text-align: left;
     font-size: 0.8em;
+    border-top: 1px solid #999;
   }
 
   ul li {
     display: flex;
     align-items: center;
     line-height: 30px;
-    border-bottom: 1px solid #999;
   }
 
-  ul a {
+  ul button {
     font-size: 0.8em;
     margin-left: 48px;
     display: block;
     width: 100%;
+    text-align: left;
     list-style: 56px;
     transition: 0.3s;
+    /*border-bottom: 1px solid #999;*/
   }
 
-  ul li:hover a {
+  ul li:hover button {
     padding-left: 10px;
   }
   ul li span {
