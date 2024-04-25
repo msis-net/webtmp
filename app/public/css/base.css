@@ -1,7 +1,6 @@
 @charset "UTF-8";
 :root {
   --nav-height: 68px;
-  --indent:12px
 }
 
 * {
@@ -12,9 +11,7 @@ body {
   font-family: "Noto Sans JP", sans-serif;
 }
 
-
-
-nav {
+.nav-height {
   height: var(--nav-height);
 }
 

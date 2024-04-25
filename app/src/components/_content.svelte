@@ -33,9 +33,30 @@
   }
 </script>
 
+<div>
+  ありがとうございました。ありがとうございました。ありがとうございました。ありがとうございました。ありがとうございました。ありがとうございました。
+</div>
 <div>{label}:location[{$navcontext}]</div>
-{#if selected.component === null}
-  <div>[{$navcontext}] is Nothing</div>
-{:else}
-  <svelte:component this={selected.component} label={$navcontext} />
-{/if}
+<div class="bg-slate-50">
+  {#if selected.component === null}
+    <div>[{$navcontext}] is Nothing</div>
+  {:else}
+    <svelte:component this={selected.component} label={$navcontext} />
+  {/if}
+</div>
+<div>Text</div>
+<div>Text</div>
+<div>Text</div>
+<div>Text</div>
+<div>Text</div>
+<div>Text</div>
+<div>Text</div>
+<div>Text</div>
+<div>Text</div>
+<div>Text</div>
+<div>Text</div>
+<div>Text</div>
+<div>Text</div>
+<div>Text</div>
+<div>Text</div>
+<div>Text</div>

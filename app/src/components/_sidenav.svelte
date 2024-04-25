@@ -12,10 +12,12 @@
 </script>
 
 <div class="hidden">{title}</div>
-<div class="text-xl bg-yellow-200 select-none p-5">
+<div class="title nav-height flex">
+  <img src="/images/adlogo.png" class="image" alt="adlogo" />
   {$t("common.header.title")}
 </div>
-<ul class="text-white bg-slate-600 overflow-y-auto">
+
+<ul class="overflow-y-auto">
   <li>
     <button on:click={() => NavContext("Dashbord")}>
       <span class="material-symbols-outlined"> speed </span>
@@ -48,6 +50,21 @@
 <style>
   * {
     user-select: none;
+  }
+  .title {
+    align-items: center; /*↕*/
+    justify-content: left; /*↔*/
+    font-size: 1.25em;
+    padding: 4px;
+  }
+  .image {
+    width: 48px; /* image width*/
+    height: 48px; /* image height */
+    object-fit: contain; /*contain / cover*/
+    /*border: dashed 1px gray; */ /* for check of image outline  */
+  }
+  ul {
+    color: #333;
   }
   ul li {
     display: flex;

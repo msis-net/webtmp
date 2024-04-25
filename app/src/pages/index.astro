@@ -30,21 +30,22 @@ const appname = "Webapp";
     </span>
   </label>
   <!-- sidebar section -->
-  <div class="sidenav fixed left-0 h-lvh w-60 bg-slate-200 overflow-y-auto">
+  <aside class="sidenav fixed left-0 h-lvh w-60 overflow-y-auto">
     <Sidenav title="sidenav" client:only="svelte" />
-  </div>
+  </aside>
   <!-- content section -->
   <section class="h-lvh">
-    <nav class="flex bg-purple-300">
+    <!-- if insert "overflow-y-auto" that pouplist is back of containt　-->
+    <nav class="nav-height flex">
       <Navbar label="Navbar" client:only="svelte" />
     </nav>
-    <div class="flex content-wrapp">
-      <main class="flex-1 bg-yellow-50 p-2 overflow-y-auto">
+    <div class="content flex content-wrapp">
+      <main class="flex-1 p-2 overflow-y-auto">
         <Content label="Content" client:only="svelte" />
       </main>
-      <div class="pagenav">
+      <aside class="pagenav overflow-y-auto">
         <Pagenav label="Pagenav" client:only="svelte" />
-      </div>
+      </aside>
       <!--
         <aside class="w-32 bg-blue-100 p-2 overflow-y-auto"></aside>
       </aside> 
@@ -54,15 +55,31 @@ const appname = "Webapp";
 </Layout>
 
 <style>
+  /*background-color*/
+  aside.sidenav {
+    background-color: #a7d8de;
+  }
+  section nav {
+    background-color: #ffcd6a;
+  }
+  section main {
+    background-color: #80a0d4;
+  }
+  aside.pagenav {
+    background-color: #9f8dbf;
+  }
+
+  /**/
   .sidenav {
     transition: all 0.5s;
+    z-index: 1;
   }
 
   #sidenav_btn,
   #pagenav_btn {
     cursor: pointer;
     transition: all 0.5s;
-    z-index: 10;
+    z-index: 2;
   }
 
   #sidenav:checked ~ .sidenav {
@@ -76,23 +93,39 @@ const appname = "Webapp";
   #sidenav:checked ~ section {
     margin-left: 0px;
   }
-  .pagenav {
-    width: 0px;
-    display: none;
-  }
-
-  #pagenav:checked ~ section div .pagenav {
-    position: static;
-    display: block;
-    transition: all 0.5s;
-    width: 200px;
-    background-color: skyblue;
-    transition: all 0.5s;
+  .content {
+    position: relative;
   }
 
   section {
     margin-left: 240px;
     transition: all 0.5s;
+  }
+
+  /*Page Navigation*/
+  /*Sinple View
+  .pagenav {
+    width: 200px;
+  }
+  */
+  /*Close/Open*/
+  .pagenav {
+    display: none;
+  }
+  #pagenav:checked ~ section div .pagenav {
+    display: block;
+    width: 200px;
+    animation-name: RightInn;
+    animation-fill-mode: forwards;
+    animation-duration: 0.5s;
+  }
+  @keyframes RightInn {
+    0% {
+      transform: translateX(200px);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
 
   @media (max-width: 768px) {
@@ -109,17 +142,16 @@ const appname = "Webapp";
       left: 0px;
     }
 
-    #sidenav:checked ~ label #sidebar {
-      z-index: 10;
-      left: 190px;
+    #sidenav:checked ~ label #sidenav_btn {
+      left: 180px;
+    }
+    #pagenav:checked ~ section div .pagenav {
+      position: absolute;
+      opacity: 0.9;
+      right: 0%;
+      height: 100%;
     }
   }
-  @media (min-width: 768px) {
-    .sidenav {
-      left: 0px;
-    }
-    #btn {
-      left: 250px;
-    }
+  @media (max-width: 1024px) {
   }
 </style>
