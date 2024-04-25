@@ -19,5 +19,7 @@
 <style>
   div.grid div {
     background-color: blue;
+    opacity: 0.2;
+    height: 102px;
   }
 </style>

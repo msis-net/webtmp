@@ -22,5 +22,7 @@
 <style>
   div.grid div {
     background-color: red;
+    opacity: 0.2;
+    height: 102px;
   }
 </style>

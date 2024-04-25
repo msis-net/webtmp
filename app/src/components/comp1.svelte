@@ -28,5 +28,7 @@
 <style>
   div.grid div {
     background-color: green;
+    opacity: 0.2;
+    height: 102px;
   }
 </style>
