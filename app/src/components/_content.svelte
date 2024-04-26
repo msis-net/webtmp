@@ -34,7 +34,8 @@
 </script>
 
 <div>
-  ありがとうございました。ありがとうございました。ありがとうございました。ありがとうございました。ありがとうございました。ありがとうございました。
+  ありがとう、 おはよう、 こんにちわ、 こんばんわ、 さようなら Thank you, good
+  morning, hello, good evening, goodbye
 </div>
 <div>{label}:location[{$navcontext}]</div>
 <div class="bg-slate-50">
@@ -44,19 +45,3 @@
     <svelte:component this={selected.component} label={$navcontext} />
   {/if}
 </div>
-<div>Text</div>
-<div>Text</div>
-<div>Text</div>
-<div>Text</div>
-<div>Text</div>
-<div>Text</div>
-<div>Text</div>
-<div>Text</div>
-<div>Text</div>
-<div>Text</div>
-<div>Text</div>
-<div>Text</div>
-<div>Text</div>
-<div>Text</div>
-<div>Text</div>
-<div>Text</div>
