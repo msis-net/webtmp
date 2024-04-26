@@ -1,9 +1,21 @@
 <script>
+  import { onMount } from "svelte";
   import { loadTranslations, t, locale, locales } from "@/lib/i18n/i18n";
   import { language, navcontext } from "@/lib/stores.js";
+  import { fade } from "svelte/transition";
   export let label;
   let view = false;
   loadTranslations($language, "/");
+
+  function clickBtn(val) {
+    console.log("val", val);
+    return val;
+  }
+
+  //Add ClickEvent to card
+  onMount(() => {
+    //pass
+  });
 </script>
 
 <main class="">{label}</main>
@@ -11,11 +23,54 @@
 <div
   class="grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-x-2 gap-y-1"
 >
-  <div>01</div>
-  <div>02</div>
+  <div>
+    <!--class="on-off"  if checked is UP-->
+    <div class="card bg-blue-300">
+      <input type="checkbox" id="box1" class="on-off" />
+      <div class="card-header">
+        <p class="card-title">Box1</p>
+        <label type="button" class="btn" for="box1">
+          <span class="material-symbols-outlined add"> add </span>
+          <span class="material-symbols-outlined remove"> remove </span>
+        </label>
+      </div>
+      <div class="card-body">
+        <p>The body of the cardA</p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card bg-red-300">
+      <input type="checkbox" id="box2" class="on-off" checked />
+      <div class="card-header">
+        <p class="card-title">Box2</p>
+        <label type="button" class="btn" for="box2">
+          <span class="material-symbols-outlined add"> add </span>
+          <span class="material-symbols-outlined remove"> remove </span>
+        </label>
+      </div>
+      <div class="card-body">
+        <p>The body of the cardA</p>
+      </div>
+    </div>
+  </div>
   <div>03</div>
   <div>04</div>
-  <div>05</div>
+  <div>
+    <!--class="close" and input tag is on outside-->
+    <input type="checkbox" id="box5" class="close" />
+    <div class="card bg-green-300">
+      <div class="card-header">
+        <p class="card-title">Box5</p>
+        <label type="button" class="btn" for="box5">
+          <span class="material-symbols-outlined"> close </span>
+        </label>
+      </div>
+      <div class="card-body">
+        <p>The body of the cardA</p>
+      </div>
+    </div>
+  </div>
   <div>06</div>
   <div>07</div>
   <div>08</div>
@@ -26,9 +81,4 @@
 </div>
 
 <style>
-  div.grid div {
-    background-color: green;
-    opacity: 0.2;
-    height: 102px;
-  }
 </style>

@@ -21,8 +21,7 @@
 
 <style>
   div.grid div {
-    background-color: red;
-    opacity: 0.2;
+    background-color: rgb(232, 202, 202);
     height: 102px;
   }
 </style>

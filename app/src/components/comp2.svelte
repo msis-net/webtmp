@@ -14,12 +14,21 @@
   <div>01</div>
   <div>02</div>
   <div>03</div>
+  <div>04</div>
+  <div class="col-span-2">05</div>
+  <div class="col-span-2">06</div>
+  <div class="col-span-4">07</div>
+  <div>08</div>
+  <div>09</div>
+  <div>10</div>
+  <div>11</div>
+  <div>12</div>
 </div>
 
 <style>
   div.grid div {
-    background-color: blue;
-    opacity: 0.2;
+    background-color: rgb(184, 184, 235);
+
     height: 102px;
   }
 </style>
