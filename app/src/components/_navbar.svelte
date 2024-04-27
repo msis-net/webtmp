@@ -33,6 +33,9 @@
 </div>
 
 <style>
+  * {
+    user-select: none;
+  }
   .navbar-main {
     @apply absolute left-12 flex space-x-5;
     line-height: 42px;

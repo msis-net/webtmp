@@ -26,9 +26,9 @@
 </div>
 
 <style>
-  div.grid div {
-    background-color: rgb(184, 184, 235);
-
-    height: 102px;
+  /*grids style*/
+  .grid > div {
+    border: solid 1px #999;
+    padding: 4px;
   }
 </style>

@@ -18,13 +18,20 @@
 </div>
 
 <ul class="overflow-y-auto">
+  <!--We recommend passing arguments to the ListChild component accordingly.
   <li>
     <button on:click={() => NavContext("Dashbord")}>
       <span class="material-symbols-outlined"> speed </span>
       Dashbord
     </button>
   </li>
-
+  -->
+  <ListChild
+    label="Dashbord"
+    {NavContext}
+    lists={["index1", "index2", "index3"]}
+    symbol="speed"
+  />
   <ListChild label="DropdownList" {NavContext} />
 
   <li>
@@ -53,7 +60,7 @@
   }
   .title {
     align-items: center; /*↕*/
-    justify-content: left; /*↔*/
+    justify-content: left; /*center↔*/
     font-size: 1.25em;
     padding: 4px;
   }

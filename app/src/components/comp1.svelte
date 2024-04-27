@@ -81,4 +81,9 @@
 </div>
 
 <style>
+  /*grids style*/
+  .grid > div {
+    border: solid 1px #999;
+    padding: 4px;
+  }
 </style>

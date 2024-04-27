@@ -14,7 +14,7 @@ const appname = "Webapp";
   <label for="sidenav">
     <span
       id="sidenav_btn"
-      class="material-symbols-outlined absolute text-2xl left-[250px] p-2 top-2 text-gray-500"
+      class="material-symbols-outlined left-[250px] p-2 top-2"
     >
       menu
     </span>
@@ -67,19 +67,30 @@ const appname = "Webapp";
   }
   aside.pagenav {
     background-color: #9f8dbf;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.2s;
   }
 
   /**/
   .sidenav {
-    transition: all 0.5s;
+    transition: all 0.2s;
     z-index: 1;
   }
 
   #sidenav_btn,
   #pagenav_btn {
     cursor: pointer;
-    transition: all 0.5s;
     z-index: 2;
+  }
+  
+  #sidenav_btn{
+    position: absolute;
+    font-size: 1.5rem/* 24px */;
+    line-height: 2rem/* 32px */;
+    padding: 0.5rem;
+    top: 0.5rem;
+    color:#666;
   }
 
   #sidenav:checked ~ .sidenav {
@@ -99,25 +110,15 @@ const appname = "Webapp";
 
   section {
     margin-left: 240px;
-    transition: all 0.5s;
+    transition: all 0.2s;
   }
 
-  /*Page Navigation*/
-  /*Sinple View
+
   .pagenav {
-    width: 200px;
-  }
-  */
-  /*Close/Open*/
-  .pagenav {
-    display: none;
+    width: 0;
   }
   #pagenav:checked ~ section div .pagenav {
-    display: block;
     width: 200px;
-    animation-name: RightInn;
-    animation-fill-mode: forwards;
-    animation-duration: 0.5s;
   }
   @keyframes RightInn {
     0% {
@@ -145,13 +146,12 @@ const appname = "Webapp";
     #sidenav:checked ~ label #sidenav_btn {
       left: 180px;
     }
-    #pagenav:checked ~ section div .pagenav {
+    pagenav:checked ~ section div .pagenav {
       position: absolute;
       opacity: 0.9;
       right: 0%;
       height: 100%;
     }
   }
-  @media (max-width: 1024px) {
-  }
+
 </style>
