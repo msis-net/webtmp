@@ -14,20 +14,22 @@
     locale.set($language);
   };
 
-  let arrowDown = false;
-  const toggleArrow = () => {
-    if (lists) {
-      if (arrowDown) {
-        arrowDown = false;
-      } else {
-        arrowDown = true;
-      }
-    }
-  };
-
   if (!symbol) {
     symbol = "segment"; // is lile burger
   }
+
+  if (!lists) {
+    lists = []; // is lile burger
+  }
+
+  let arrowDown = false;
+  const toggleArrow = () => {
+    if (arrowDown) {
+      arrowDown = false;
+    } else {
+      arrowDown = true;
+    }
+  };
 </script>
 
 <button on:click={toggleArrow}>
@@ -35,11 +37,10 @@
     <!--span class="material-symbols-outlined"> unfold_more </span-->
     <span class="material-symbols-outlined mr-1"> {symbol} </span>
     {label}
-    {#if lists}
-      <span class="material-symbols-outlined arrow" class:arrowDown
-        >navigate_before</span
-      >
-    {/if}
+
+    <span class="material-symbols-outlined arrow" class:arrowDown
+      >navigate_before</span
+    >
   </div>
 </button>
 
@@ -56,7 +57,9 @@
     {#each lists as list}
       <li>
         <button on:click={() => NavContext({ list })}>
-          <span class="material-symbols-outlined"> fiber_manual_record </span>
+          <span class="material-symbols-outlined label">
+            fiber_manual_record
+          </span>
           {list}
         </button>
       </li>
@@ -64,23 +67,28 @@
 
     <li>
       <button on:click={() => NavContext("label")}>
-        <span class="material-symbols-outlined"> label </span>
+        <span class="material-symbols-outlined label"> label </span>
         label
       </button>
     </li>
     <li>
       <button on:click={() => NavContext("label_important")}>
-        <span class="material-symbols-outlined"> label_important </span>
+        <span class="material-symbols-outlined label"> label_important </span>
         label_important
       </button>
     </li>
     <li>
       <button on:click={() => NavContext("adjust")}>
-        <span class="material-symbols-outlined"> adjust </span>
+        <span class="material-symbols-outlined label"> adjust </span>
         adjust
       </button>
     </li>
-    <ListChild_1 label="Child list" {NavContext} />
+    <ListChild_1
+      label="Child list"
+      {NavContext}
+      simbol="fiber_smart_record"
+      lists={["child1", "child2", "child"]}
+    />
   </ul>
 {/if}
 

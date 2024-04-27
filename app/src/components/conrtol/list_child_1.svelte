@@ -6,10 +6,20 @@
   loadTranslations($language, "/");
   export let label;
   export let NavContext; //ParentFunction
+  export let lists;
+  export let symbol; //Google icon name
 
   const onChange = () => {
     locale.set($language);
   };
+
+  if (!symbol) {
+    symbol = "fiber_smart_record"; // is lile burger
+  }
+
+  if (!lists) {
+    lists = []; // is lile burger
+  }
 
   let arrowDown = false;
   const toggleArrow = () => {
@@ -24,7 +34,7 @@
 <button on:click={toggleArrow}>
   <div>
     <!--span class="material-symbols-outlined"> unfold_more </span-->
-    <span class="material-symbols-outlined"> fiber_smart_record </span>
+    <span class="material-symbols-outlined"> {symbol} </span>
 
     {label}
     <span class="material-symbols-outlined arrow" class:arrowDown
@@ -43,6 +53,14 @@
       axis: "y", //方向
     }}
   >
+    {#each lists as list}
+      <li>
+        <button on:click={() => NavContext({ list })}>
+          <span class="material-symbols-outlined"> fiber_manual_record </span>
+          {list}
+        </button>
+      </li>
+    {/each}
     <li>
       <button on:click={() => NavContext("Child label-1")}>
         <span class="material-symbols-outlined"> fiber_manual_record </span>
