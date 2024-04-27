@@ -3,24 +3,13 @@
   import { language, navcontext } from "@/lib/stores.js";
   import { slide } from "svelte/transition";
   import { quintOut } from "svelte/easing";
-  import ListChild_1 from "./list_child_1.svelte";
+  import ListChild from "./list_child.svelte";
   loadTranslations($language, "/");
-  export let label;
   export let NavContext; //ParentFunction
-  export let lists;
-  export let symbol; //Google icon name
-
+  export let value; //Google icon name
   const onChange = () => {
     locale.set($language);
   };
-
-  if (!symbol) {
-    symbol = "segment"; // is lile burger
-  }
-
-  if (!lists) {
-    lists = []; // is lile burger
-  }
 
   let arrowDown = false;
   const toggleArrow = () => {
@@ -35,8 +24,8 @@
 <button on:click={toggleArrow}>
   <div>
     <!--span class="material-symbols-outlined"> unfold_more </span-->
-    <span class="material-symbols-outlined mr-1"> {symbol} </span>
-    {label}
+    <span class="material-symbols-outlined mr-1"> {value.symbol} </span>
+    {value.name}
 
     <span class="material-symbols-outlined arrow" class:arrowDown
       >navigate_before</span
@@ -46,7 +35,7 @@
 
 {#if arrowDown}
   <ul
-    class="text-gray-000"
+    class="ml-6"
     transition:slide={{
       delay: 250,
       duration: 300,
@@ -54,41 +43,29 @@
       axis: "y", //方向
     }}
   >
-    {#each lists as list}
-      <li>
-        <button on:click={() => NavContext({ list })}>
-          <span class="material-symbols-outlined label">
-            fiber_manual_record
-          </span>
-          {list}
-        </button>
-      </li>
+    {#each value.lists as list}
+      {#if list.sublist}
+        <ListChild value={list.sublist} {NavContext} />
+      {:else}
+        <li>
+          {#if list.url}
+            <a href={list.url} class="">
+              <span class="material-symbols-outlined label">
+                {list.symbol}
+              </span>
+              {list.label}
+            </a>
+          {:else}
+            <button on:click={() => NavContext(list.context)}>
+              <span class="material-symbols-outlined label">
+                {list.symbol}
+              </span>
+              {list.label}
+            </button>
+          {/if}
+        </li>
+      {/if}
     {/each}
-
-    <li>
-      <button on:click={() => NavContext("label")}>
-        <span class="material-symbols-outlined label"> label </span>
-        label
-      </button>
-    </li>
-    <li>
-      <button on:click={() => NavContext("label_important")}>
-        <span class="material-symbols-outlined label"> label_important </span>
-        label_important
-      </button>
-    </li>
-    <li>
-      <button on:click={() => NavContext("adjust")}>
-        <span class="material-symbols-outlined label"> adjust </span>
-        adjust
-      </button>
-    </li>
-    <ListChild_1
-      label="Child list"
-      {NavContext}
-      simbol="fiber_smart_record"
-      lists={["child1", "child2", "child"]}
-    />
   </ul>
 {/if}
 
@@ -111,10 +88,14 @@
   }
 
   button div {
-    margin: 4px;
+    margin: 0.25rem;
   }
-
+  ul {
+    position: relative;
+    color: #333;
+  }
   ul li {
+    position: relative;
     display: flex;
     align-items: center;
     line-height: 30px;
@@ -122,8 +103,6 @@
 
   ul button {
     font-size: 0.8em;
-    margin-left: 24px;
-    display: block;
     width: 100%;
     text-align: left;
     list-style: 56px;

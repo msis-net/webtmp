@@ -2,6 +2,7 @@
   import ListChild from "./conrtol/list_child.svelte";
   import { loadTranslations, t, locale, locales } from "@/lib/i18n/i18n";
   import { language, navcontext } from "@/lib/stores.js";
+  import { navlist } from "@/lib/navlist.js";
 
   export let title;
   loadTranslations($language, "/");
@@ -18,22 +19,8 @@
 </div>
 
 <ul class="overflow-y-auto">
-  <!--We recommend passing arguments to the ListChild component accordingly.
-  <li>
-    <button on:click={() => NavContext("Dashbord")}>
-      <span class="material-symbols-outlined"> speed </span>
-      Dashbord
-    </button>
-  </li>
-  -->
-  <ListChild
-    label="Dashbord"
-    {NavContext}
-    lists={["index1", "index2", "index3"]}
-    symbol="speed"
-  />
-  <ListChild label="DropdownList" {NavContext} />
-
+  <ListChild value={navlist.find((v) => v.name == "Dashbord")} {NavContext} />
+  <ListChild value={navlist.find((v) => v.name == "Dropdown")} {NavContext} />
   <li>
     <button on:click={() => NavContext("Menu1")}>
       <span class="material-symbols-outlined"> format_indent_increase </span>
@@ -51,6 +38,9 @@
       <span class="material-symbols-outlined"> list </span>
       Menu3
     </button>
+  </li>
+  <li>
+    <div class="p-2">Checkout /lib/navlist.js</div>
   </li>
 </ul>
 
