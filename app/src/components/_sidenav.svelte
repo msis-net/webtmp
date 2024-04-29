@@ -1,8 +1,8 @@
 <script>
   import ListChild from "./conrtol/list_child.svelte";
   import { loadTranslations, t, locale, locales } from "@/lib/i18n/i18n";
-  import { language, navcontext } from "@/lib/stores.js";
-  import { navlist } from "@/lib/navlist.js";
+  import { language, navcontext } from "@/lib/stores";
+  import { navlist } from "@/lib/sidenav";
 
   export let title;
   loadTranslations($language, "/");
