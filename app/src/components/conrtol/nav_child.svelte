@@ -1,6 +1,6 @@
 <script>
   import { loadTranslations, t, locale, locales } from "@/lib/i18n/i18n";
-  import { language, CodeSystem, Tabname, OpenTab } from "@/lib/stores.js";
+  import { language } from "@/lib/stores.js";
   import { fade } from "svelte/transition";
   loadTranslations($language, "/");
   export let label;

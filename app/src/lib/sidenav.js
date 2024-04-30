@@ -2,6 +2,7 @@ export const navlist = [
   {
     name: "Dashbord",
     symbol: "speed",
+    open: false,
     lists: [
       {
         label: "index1",
@@ -26,6 +27,7 @@ export const navlist = [
   {
     name: "Dropdown",
     symbol: "segment",
+    open: false,
     lists: [
       {
         label: "list1",
@@ -49,6 +51,7 @@ export const navlist = [
         sublist: {
           name: "list4",
           symbol: "fiber_smart_record",
+          open: false,
           lists: [
             {
               label: "sublist1",
@@ -67,6 +70,7 @@ export const navlist = [
               sublist: {
                 name: "sublist3",
                 symbol: "fiber_smart_record",
+                open: false,
                 lists: [
                   {
                     label: "sublist3-1",
