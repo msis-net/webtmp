@@ -11,13 +11,25 @@
     locale.set($language);
   };
 
-  let arrowDown = false;
+  const nav_name = value.name;
+  let navstatus = JSON.parse(sessionStorage.getItem("navstatus"));
+  let itemlist = navstatus.find((v) => v.name == value.name);
+
+  let arrowDown;
+  try {
+    arrowDown = itemlist.open;
+  } catch (e) {
+    arrowDown = false;
+  }
+
   const toggleArrow = () => {
     if (arrowDown) {
       arrowDown = false;
     } else {
       arrowDown = true;
     }
+    itemlist.open = arrowDown;
+    sessionStorage.setItem("navstatus", JSON.stringify(navstatus));
   };
 </script>
 

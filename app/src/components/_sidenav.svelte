@@ -10,6 +10,10 @@
   const NavContext = (context) => {
     $navcontext = context;
   };
+
+  if (!sessionStorage.getItem("navstatus")) {
+    sessionStorage.setItem("navstatus", JSON.stringify(navlist));
+  }
 </script>
 
 <div class="hidden">{title}</div>
