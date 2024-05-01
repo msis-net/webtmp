@@ -4,7 +4,7 @@
   import { language, navcontext } from "@/lib/stores.js";
   export let label;
   loadTranslations($language, "/");
-  const NavContext = (context: string) => {
+  const NavContext = (context) => {
     $navcontext = context;
   };
 </script>

@@ -1,5 +1,14 @@
 # WATe(Web App Template)
 
+### Startup
+
+```
+>npm ci
+>npm install @astrojs/svelte
+>npm run dev
+
+```
+
 ### JavaScript
 
 私は開発案件をこなす為、役に立ちそうなフレームワークを探していました。

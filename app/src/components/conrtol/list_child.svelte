@@ -9,11 +9,11 @@
   export let navlist; //Google icon name
 
   let navstatus = sessionStorage.getItem("navstatus")
-    ? JSON.parse(sessionStorage.getItem("navstatus")!)
+    ? JSON.parse(sessionStorage.getItem("navstatus"))
     : [];
-  let itemlist = navstatus.find((v: any) => v.name == navlist.name);
+  let itemlist = navstatus.find((v) => v.name == navlist.name);
 
-  let arrowDown: boolean;
+  let arrowDown;
   try {
     arrowDown = itemlist.open;
   } catch (e) {

@@ -21,7 +21,7 @@
   //dropdown以外のクリックで閉じる
   import { onMount, onDestroy } from "svelte";
 
-  const handleClickOutside = (event: any) => {
+  const handleClickOutside = (event) => {
     if (!event.target.closest(".dropdown") && arrowDown) {
       arrowDown = false;
     }

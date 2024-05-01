@@ -7,7 +7,7 @@
   export let title;
   loadTranslations($language, "/");
 
-  const NavContext = (context: string) => {
+  const NavContext = (context) => {
     $navcontext = context;
   };
 
