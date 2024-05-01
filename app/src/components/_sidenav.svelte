@@ -23,8 +23,8 @@
 </div>
 
 <ul class="overflow-y-auto">
-  <ListChild value={navlist.find((v) => v.name == "Dashbord")} {NavContext} />
-  <ListChild value={navlist.find((v) => v.name == "Dropdown")} {NavContext} />
+  <ListChild navlist={navlist.find((v) => v.name == "Dashbord")} {NavContext} />
+  <ListChild navlist={navlist.find((v) => v.name == "Dropdown")} {NavContext} />
   <li>
     <button on:click={() => NavContext("Menu1")}>
       <span class="material-symbols-outlined"> format_indent_increase </span>
