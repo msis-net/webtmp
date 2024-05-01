@@ -1,6 +1,6 @@
 <script>
-  import { loadTranslations, t, locale, locales } from "@/lib/i18n/i18n";
-  import { language, navcontext } from "@/lib/stores.js";
+  import { loadTranslations } from "@/lib/i18n/i18n";
+  import { language, navcontext } from "@/lib/stores";
 
   export let label;
   let view = false;
