@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { loadTranslations, locale, t } from "@/lib/i18n/i18n";
   import { language } from "@/lib/stores.js";
   import { fade } from "svelte/transition";
@@ -21,7 +21,7 @@
   //dropdown以外のクリックで閉じる
   import { onMount, onDestroy } from "svelte";
 
-  const handleClickOutside = (event) => {
+  const handleClickOutside = (event: any) => {
     if (!event.target.closest(".dropdown") && arrowDown) {
       arrowDown = false;
     }

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { loadTranslations } from "@/lib/i18n/i18n";
   import { language } from "@/lib/stores.js";
   import { slide } from "svelte/transition";
@@ -9,11 +9,11 @@
   export let navlist; //Google icon name
 
   let navstatus = sessionStorage.getItem("navstatus")
-    ? JSON.parse(sessionStorage.getItem("navstatus"))
+    ? JSON.parse(sessionStorage.getItem("navstatus")!)
     : [];
-  let itemlist = navstatus.find((v) => v.name == navlist.name);
+  let itemlist = navstatus.find((v: any) => v.name == navlist.name);
 
-  let arrowDown;
+  let arrowDown: boolean;
   try {
     arrowDown = itemlist.open;
   } catch (e) {

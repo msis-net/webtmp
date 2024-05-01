@@ -1,9 +1,8 @@
-<script>
+<script lang="ts">
   import { loadTranslations } from "@/lib/i18n/i18n";
   import { language, navcontext } from "@/lib/stores";
 
   export let label;
-  let view = false;
   loadTranslations($language, "/");
 
   //Compornetnt items

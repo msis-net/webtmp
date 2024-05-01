@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
   import NavChild from "./conrtol/nav_child.svelte";
   import { loadTranslations } from "@/lib/i18n/i18n";
   import { language, navcontext } from "@/lib/stores.js";
   export let label;
   loadTranslations($language, "/");
-  const NavContext = (context) => {
+  const NavContext = (context: any) => {
     $navcontext = context;
   };
 </script>

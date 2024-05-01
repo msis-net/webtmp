@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
   import { loadTranslations } from "@/lib/i18n/i18n";
   import { language } from "@/lib/stores.js";
