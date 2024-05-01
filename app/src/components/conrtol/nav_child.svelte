@@ -1,6 +1,6 @@
-<script>
-  import { loadTranslations, t, locale, locales } from "@/lib/i18n/i18n";
-  import { language, CodeSystem, Tabname, OpenTab } from "@/lib/stores.js";
+<script lang="ts">
+  import { loadTranslations, locale, t } from "@/lib/i18n/i18n";
+  import { language } from "@/lib/stores.js";
   import { fade } from "svelte/transition";
   loadTranslations($language, "/");
   export let label;
@@ -21,7 +21,7 @@
   //dropdown以外のクリックで閉じる
   import { onMount, onDestroy } from "svelte";
 
-  const handleClickOutside = (event) => {
+  const handleClickOutside = (event: any) => {
     if (!event.target.closest(".dropdown") && arrowDown) {
       arrowDown = false;
     }
@@ -46,7 +46,7 @@
     >
   </button>
   {#if arrowDown}
-    <ul class="dropdown-item hidden" transition:fade>
+    <ul class="dropdown-item hidden p-2" transition:fade>
       <li>
         <button on:click={() => NavContext("ABOUT")}> ABOUT </button>
       </li>
@@ -57,10 +57,13 @@
         <button on:click={() => NavContext("CONTACT")}> CONTACT </button>
       </li>
       <li>
-        <select bind:value={$language} on:change={onChange}>
-          <option value="en" selected>en</option>
-          <option value="ja">ja</option>
-        </select>
+        <div class="p-1 space-x-2">
+          <label for="">{$t("common.navigate.Language")}</label>
+          <select bind:value={$language} on:change={onChange} class="pl-4 pr-4">
+            <option value="en" selected>en</option>
+            <option value="ja">ja</option>
+          </select>
+        </div>
       </li>
     </ul>
   {/if}
@@ -103,16 +106,11 @@
     margin: 4px;
     width: 98%;
     text-align: left;
-    font-size: 0.8em;
   }
   ul li:hover {
     background-color: #eee;
   }
 
-  select {
-    margin: 4px;
-    font-size: 0.8em;
-  }
   @media (max-width: 768px) {
     .label {
       display: none;

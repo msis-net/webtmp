@@ -1,31 +1,43 @@
-<script>
-  import { loadTranslations, t, locale, locales } from "@/lib/i18n/i18n";
-  import { language, navcontext } from "@/lib/stores.js";
+<script lang="ts">
+  import { loadTranslations } from "@/lib/i18n/i18n";
+  import { language } from "@/lib/stores.js";
   import { slide } from "svelte/transition";
   import { quintOut } from "svelte/easing";
   import ListChild from "./list_child.svelte";
   loadTranslations($language, "/");
   export let NavContext; //ParentFunction
-  export let value; //Google icon name
-  const onChange = () => {
-    locale.set($language);
-  };
+  export let navlist; //Google icon name
 
-  let arrowDown = false;
+  let navstatus = sessionStorage.getItem("navstatus")
+    ? JSON.parse(sessionStorage.getItem("navstatus")!)
+    : [];
+  let itemlist = navstatus.find((v: any) => v.name == navlist.name);
+
+  let arrowDown: boolean;
+  try {
+    arrowDown = itemlist.open;
+  } catch (e) {
+    arrowDown = false;
+  }
+
   const toggleArrow = () => {
     if (arrowDown) {
       arrowDown = false;
     } else {
       arrowDown = true;
     }
+    try {
+      itemlist.open = arrowDown;
+    } catch (e) {}
+    sessionStorage.setItem("navstatus", JSON.stringify(navstatus));
   };
 </script>
 
 <button on:click={toggleArrow}>
   <div>
     <!--span class="material-symbols-outlined"> unfold_more </span-->
-    <span class="material-symbols-outlined mr-1"> {value.symbol} </span>
-    {value.name}
+    <span class="material-symbols-outlined mr-1"> {navlist.symbol} </span>
+    {navlist.name}
 
     <span class="material-symbols-outlined arrow" class:arrowDown
       >navigate_before</span
@@ -43,9 +55,9 @@
       axis: "y", //方向
     }}
   >
-    {#each value.lists as list}
+    {#each navlist.lists as list}
       {#if list.sublist}
-        <ListChild value={list.sublist} {NavContext} />
+        <ListChild navlist={list.sublist} {NavContext} />
       {:else}
         <li>
           {#if list.url}

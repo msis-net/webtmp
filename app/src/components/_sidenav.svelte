@@ -1,26 +1,32 @@
-<script>
+<script lang="ts">
   import ListChild from "./conrtol/list_child.svelte";
-  import { loadTranslations, t, locale, locales } from "@/lib/i18n/i18n";
+  import { loadTranslations, t } from "@/lib/i18n/i18n";
   import { language, navcontext } from "@/lib/stores";
   import { navlist } from "@/lib/sidenav";
 
   export let title;
   loadTranslations($language, "/");
 
-  const NavContext = (context) => {
+  const NavContext = (context: string) => {
     $navcontext = context;
   };
+
+  if (!sessionStorage.getItem("navstatus")) {
+    sessionStorage.setItem("navstatus", JSON.stringify(navlist));
+  }
 </script>
 
 <div class="hidden">{title}</div>
-<div class="title nav-height flex">
-  <img src="/images/adlogo.png" class="image" alt="adlogo" />
-  {$t("common.header.title")}
-</div>
+<a href="/">
+  <div class="title nav-height flex">
+    <img src="/images/adlogo.png" class="image" alt="adlogo" />
+    {$t("common.header.title")}
+  </div>
+</a>
 
 <ul class="overflow-y-auto">
-  <ListChild value={navlist.find((v) => v.name == "Dashbord")} {NavContext} />
-  <ListChild value={navlist.find((v) => v.name == "Dropdown")} {NavContext} />
+  <ListChild navlist={navlist.find((v) => v.name == "Dashbord")} {NavContext} />
+  <ListChild navlist={navlist.find((v) => v.name == "Dropdown")} {NavContext} />
   <li>
     <button on:click={() => NavContext("Menu1")}>
       <span class="material-symbols-outlined"> format_indent_increase </span>
