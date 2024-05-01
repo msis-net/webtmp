@@ -24,7 +24,8 @@
   $: {
     if ($navcontext.length > 0) {
       if (options.find((v) => v.name == $navcontext)) {
-        selected = options.find((v) => v.name == $navcontext);
+        const foundOption = options.find((v) => v.name == $navcontext);
+        selected = foundOption ? foundOption : options[0];
       } else {
         selected = options[0];
       }
