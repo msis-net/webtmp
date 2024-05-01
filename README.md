@@ -31,6 +31,15 @@
   <div class="text-right">
   ※2024/02/29:過去の経験と現在のトレンド（今後の動向）を踏まえて厳選。
 
-      </div>
-
-    </lo>
+    1        0.161 chcp 65001 | Out-Null ; cd C:\Users\eve/Desktop
+   2        0.002 cd app
+   3       25.298 npm ci
+   4     2:24.415 npm run dev
+   5       13.609 npx astro add svelte
+   6       11.939 npx astro add tailwind
+   7     1:32.232 npm run dev
+   8     5:03.511 npm run dev
+   9     9:55.496 npm run dev
+  10        4.898 npm install @tsconfig/svelte
+  11        5.283 npm install @astrojs/ts-plugin
+  12        2.882 npm install @types/estree --save-dev
