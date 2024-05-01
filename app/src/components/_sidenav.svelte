@@ -17,10 +17,12 @@
 </script>
 
 <div class="hidden">{title}</div>
-<div class="title nav-height flex">
-  <img src="/images/adlogo.png" class="image" alt="adlogo" />
-  {$t("common.header.title")}
-</div>
+<a href="/">
+  <div class="title nav-height flex">
+    <img src="/images/adlogo.png" class="image" alt="adlogo" />
+    {$t("common.header.title")}
+  </div>
+</a>
 
 <ul class="overflow-y-auto">
   <ListChild navlist={navlist.find((v) => v.name == "Dashbord")} {NavContext} />
