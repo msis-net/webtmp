@@ -7,22 +7,21 @@
 
 <main class="">{label}</main>
 
-<div
-  class="grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-x-2 gap-y-1"
->
+<div class="p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-1 gap-y-1">
   <div>01</div>
   <div>02</div>
   <div>03</div>
   <div>04</div>
-  <div class="col-span-2">05</div>
-  <div class="col-span-2">06</div>
-  <div class="col-span-4">07</div>
+  <div>05</div>
+  <div>06</div>
+  <div>07</div>
   <div>08</div>
-  <div>09</div>
-  <div>10</div>
-  <div>11</div>
-  <div>12</div>
+  <div class="sm:col-span-2">09</div>
+  <div class="sm:col-span-2">10</div>
+  <div class="md:col-span-4">11</div>
+  <div class="md:col-span-4">12</div>
 </div>
+<hr />
 
 <style>
   /*grids style*/

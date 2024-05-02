@@ -47,7 +47,7 @@
     </button>
   </li>
   <li>
-    <div class="p-2">Checkout /lib/navlist.js</div>
+    <div class="p-2">Checkout /lib/sidenav.js</div>
   </li>
 </ul>
 

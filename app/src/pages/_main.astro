@@ -8,14 +8,13 @@ const { label } = Astro.props;
   あいうえおかきくけこあいうえおかきくけこあいうえおかきくけこあいうえおかきくけこあいうえおかきくけこ
 </div>
 
-<div class="tabs height-content">
+<div class="tabs content-wrapp">
   <Tabs client:only="svelte" />
 </div>
 
 <style>
   .tabs{
-    border: solid 1px #999;
-    height: 100%;
+    padding: 0.5rem/* 8px */;
     background-color: aliceblue;
   }
 </style>

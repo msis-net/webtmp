@@ -65,7 +65,7 @@
   </nav>
 </div>
 
-<div class="tab-height-nav">
+<div class="tabbody tab-height-nav">
   <div
     id="tab1"
     class="h-full bg-gray-100 {$OpenTab === 1 ? 'visible' : 'hidden'}"
@@ -105,6 +105,6 @@
 
 <style>
   .tabbody {
-    height: 400px;
+    height: calc(100%);
   }
 </style>
