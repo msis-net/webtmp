@@ -1,10 +1,8 @@
 <script lang="ts">
-  import { loadTranslations } from "@/lib/i18n/i18n";
-  import { language } from "@/lib/stores.js";
   import { slide } from "svelte/transition";
   import { quintOut } from "svelte/easing";
   import ListChild from "./list_child.svelte";
-  loadTranslations($language, "/");
+
   export let NavContext; //ParentFunction
   export let navlist; //Google icon name
 

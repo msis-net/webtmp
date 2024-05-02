@@ -3,9 +3,10 @@
   import { loadTranslations, t } from "@/lib/i18n/i18n";
   import { language, navcontext } from "@/lib/stores";
   import { navlist } from "@/lib/sidenav";
+  //$language = window.navigator.language;
+  loadTranslations($language, "/");
 
   export let title;
-  loadTranslations($language, "/");
 
   const NavContext = (context: any) => {
     $navcontext = context;

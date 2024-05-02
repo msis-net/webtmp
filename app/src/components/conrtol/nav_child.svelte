@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { loadTranslations, locale, t } from "@/lib/i18n/i18n";
+  import { onMount, onDestroy } from "svelte";
+  import { locale, t } from "@/lib/i18n/i18n";
   import { language } from "@/lib/stores.js";
   import { fade } from "svelte/transition";
-  loadTranslations($language, "/");
+
   export let label;
   export let NavContext; //ParentFunction
   const onChange = () => {
@@ -19,8 +20,6 @@
   };
 
   //dropdown以外のクリックで閉じる
-  import { onMount, onDestroy } from "svelte";
-
   const handleClickOutside = (event: any) => {
     if (!event.target.closest(".dropdown") && arrowDown) {
       arrowDown = false;
@@ -58,7 +57,7 @@
       </li>
       <li>
         <div class="p-1 space-x-2">
-          <label for="">{$t("common.navigate.Language")}</label>
+          <span>{$t("common.navigate.Language")}</span>
           <select bind:value={$language} on:change={onChange} class="pl-4 pr-4">
             <option value="en" selected>en</option>
             <option value="ja">ja</option>

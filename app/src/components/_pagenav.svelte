@@ -1,8 +1,5 @@
 <script lang="ts">
-  import { loadTranslations } from "@/lib/i18n/i18n";
-  import { language } from "@/lib/stores.js";
   export let label;
-  loadTranslations($language, "/");
 </script>
 
 <div class="m-2">{label}</div>
