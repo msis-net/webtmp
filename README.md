@@ -3,10 +3,7 @@
 ### Startup
 
 ```
->npm ci
->npm install @astrojs/svelte
->npm run dev
-
+>npm install
 ```
 
 ### JavaScript
